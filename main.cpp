@@ -1,14 +1,12 @@
 #include <stdio.h>
-//#include <stdlib.h>
 #include "mbed.h"
 #include "HCSR04.h"
 #include "AutomationElements.h"
 #include "BMP180.h"
 #include "WakeUp.h"
-//#include "math.h"
 
 Serial pc(USBTX, USBRX); // serie USB
-//Serial TD1208(PA_14, PA_15); // serie sigfox
+
 HCSR04 sensor(PC_14, PC_13); // capteur ultrason
 
 I2C i2c(I2C_SDA, I2C_SCL);
@@ -175,7 +173,6 @@ State state = Start;
                 {
                     continue;
                 }
-                pc.printf("AT$SS=%02X %02X %02X %02X \r\n",convert(temp), (unsigned int)(pressure/100-900), (unsigned int)batt, car);
                 state = SendCarTempPres;
             break;
             
